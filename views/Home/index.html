@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/img/apple-icon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="text-gray-900 antialiased">
+    <nav id="navbar" class="bg-stone-800 w-full z-20 top-0 start-0 shadow-xl">
+      
+    </nav>
+    <main>
+      <div
+        class="relative pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 75vh;"
+      >
+        <div
+          class="absolute top-0 w-full h-full bg-center bg-cover"
+          style='background-image: url("/images/andrea-donato-MNu0n-3BIKs-unsplash.jpg");'
+        >
+          <span
+            id="blackOverlay"
+            class="w-full h-full absolute opacity-75 bg-black"
+          ></span>
+        </div>
+        <div class="container relative mx-auto">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div class="pr-12">
+                <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">!Ofertas de apertura¡</h1>
+                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-4">¿Estas listo para lucir de lo mejor y ademas de eso recibir la mejor atencion?, si? Excelente!, pero antes de eso, te invito a iniciar sesion o registrarte para que agendes tu cita, te esperamos!! .</p>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+          style="height: 70px;"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-stone-600 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+      </div>
+      <section class="pb-20 bg-stone-900 -mt-24">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap text-white">
+            <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-stone-700 w-full mb-8 shadow-xl rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-500"
+                  >
+                    <i class="fas fa-award"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">¿Buscas la mejor atencion?</h6>
+                  <p class="mt-2 mb-4 text-gray-200">
+                  Te invito a que vengas y veas por ti mismo la calidad de nuestro servicio, 
+                  si buscas la mejor atencion y el mejor servicio, pide una reserva que aqui te esperamos🤗!!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-4/12 px-4 text-center text-white">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-stone-700 w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-500"
+                  >
+                    <i class="fas fa-retweet"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">Reservar nunca fue tan facil</h6>
+                  <p class="mt-2 mb-4 text-gray-200">
+                   Con nuestro mecanismo para reservar citas, con tan solo dos clicks ya estaras reservando y
+                   esperando a recibir la atencion para lucir excelente💇‍♂️
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-stone-700 w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-500"
+                  >
+                    <i class="fas fa-fingerprint"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">Calidad y Confort</h6>
+                  <p class="mt-2 mb-4 text-gray-200">
+                   Ven y vive la experiencia de la cual no te arrepentiras, cortes de lujo y ofertas a punto de terminarse , ven a cambiar ese fisico este 2024!!👦
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center mt-32">
+            <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
+              <div
+                class="text-gray-100 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-stone-700"
+              >
+                <i class="fas fa-user-friends text-xl"></i>
+              </div>
+              <h3 class="text-3xl mb-2 font-serif font-semibold leading-normal text-slate-200">
+                Alejandro's BarberShop
+              </h3>
+              <p
+                class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-100"
+              >
+               En la carrera de San Francisco se encuentra la nueva barbaria ALEJANDRO'S BARBERSHOP, 
+               llego para quedarse con 
+               sus frescos estilos y gran habilidad para hacerte lucir de lo mejor de la mano de sus expertos, 
+               te sentiras renovado.
+              </p>
+              <p
+                class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-100"
+              >
+               barbero con 9 años de experiencia. Un  buen ambiente, comodidad y confianza es lo que encontraras aqui. 
+              </p>
+            </div>
+            <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+              <div
+                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-100"
+              >
+                <img
+                  alt="..."
+                  src="/images/drago.jpeg"
+                  class="w-full align-middle rounded-t-lg"
+                />
+                <blockquote class="relative p-8 mb-4">
+                  <svg
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 583 95"
+                    class="absolute left-0 w-full block"
+                    style="height: 95px; top: -94px;"
+                  >
+                    <polygon
+                      points="-30,95 583,95 583,65"
+                      class="text-neutral-600 fill-current"
+                    ></polygon>
+                  </svg>
+                  <h4 class="text-xl font-bold text-slate-800">
+                   Especialistas 💇‍♂️
+                  </h4>
+                  <p class="text-md font-light mt-2 text-slate-800">
+                  toda historia tiene su protagonista y aqui en Alejandro's Barbershop el genio detras de la maquina se llama Alejandro Landaeta
+                  <br>
+                  (The Tiger🐯)
+                  </p>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="relative py-20 bg-stone-300">
+        <div
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+          style="height: 80px;"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-stone-300 fill-current shadow-xl"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div class="container mx-auto px-4">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+              <img
+                alt="..."
+                class="max-w-full rounded-lg shadow-lg"
+                src="/images/nick-fewings-VfWpvJAshN0-unsplash.jpg"
+              />
+            </div>
+            <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
+              <div class="md:pr-12">
+                <div
+                  class="text-stone-100 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-stone-700"
+                >
+                  <i class="fas fa-rocket text-xl"></i>
+                </div>
+                <h3 class="text-3xl font-semibold text-gray-900">Components</h3>
+                <p class="mt-4 text-lg leading-relaxed text-gray-900">
+                  La combinación contemporánea y moderna, asegura que cada cliente se marche con una apariencia cuidada e inmejorable. Al adentrarse en nuestro atractivo espacio, encontrará la esencia de la autenticidad y una atención personalizada, elementos fundamentales en Alejandro's Barbershop.
+                </p>
+                <ul class="list-none mt-6">
+                  <li class="py-2">
+                    <div class="flex items-center">
+                      <div>
+                        <span
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-stone-100 bg-stone-700 mr-3"
+                          ><i class="fas fa-fingerprint"></i
+                        ></span>
+                      </div>
+                      <div>
+                        <h4 class="text-gray-900">
+                          Carefully crafted components
+                        </h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="py-2">
+                    <div class="flex items-center">
+                      <div>
+                        <span
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-stone-100 bg-stone-700 mr-3"
+                          ><i class="fab fa-html5"></i
+                        ></span>
+                      </div>
+                      <div>
+                        <h4 class="text-gray-900">Amazing page examples</h4>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="py-2">
+                    <div class="flex items-center">
+                      <div>
+                        <span
+                          class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-stone-100 bg-stone-700 mr-3"
+                          ><i class="far fa-paper-plane"></i
+                        ></span>
+                      </div>
+                      <div>
+                        <h4 class="text-gray-900">Dynamic components</h4>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class= "pb-20 relative block bg-stone-900">
+        <div
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+          style="height: 80px;"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-stone-900 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div class="container mx-auto px-4 lg:pt-24 lg:pb-64">
+          <div class="flex flex-wrap text-center justify-center">
+            <div class="w-full lg:w-6/12 px-4">
+              <h2 class="text-4xl font-semibold text-white">Galery</h2>
+              <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
+              en las siguientes imagenes podras ver todo lo relacionado con las skils de nuestros barberos
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-wrap mt-12 justify-center">
+            <div class="w-full lg:w-3/12 px-4 text-center">
+              <div
+                class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
+              >
+                <i class="fas fa-medal text-xl"></i>
+              </div>
+              <h6 class="text-xl mt-5 font-semibold text-white">
+                Excelent Services
+              </h6>
+            </div>
+              
+        
+        <div class="shadow-md sm:rounded-lg p-4 py-4 hidden md:block">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-01-14 161744.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-01-14 161908.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-01-14 161936.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-02-10 192308.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/WhatsApp Image 2024-02-16 at 8.55.11 PM.jpeg" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-02-16 213336.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-02-16 223654.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-02-16 224001.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-02-16 224344.png" alt="">
+              </div>
+              <div>
+                  <img class="h-auto max-w-full rounded-lg" src="/images/Captura de pantalla 2024-02-16 225230.png" alt="">
+              </div>
+          </div>
+      </div>  
+    </div>
+  </div>
+      </section>
+      <section class="pt-20 pb-48 bg-stone-800">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap justify-center text-center mb-24">
+            <div class="w-full lg:w-6/12 px-4">
+              <h2 class="text-4xl font-semibold text-slate-100">Here are our heroes</h2>
+              <p class="text-lg leading-relaxed m-4 text-gray-100">
+              Aqui puedes ver mejor quienes son los que estan detras de todo el sistema especializado en la barberia 
+              </p>
+            </div>
+          </div>
+            <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+              <div class="px-6">
+                <img
+                  alt="..."
+                  src=""
+                  class="shadow-lg rounded-full max-w-full mx-auto"
+                  style="max-width: 120px;"
+                />
+                <div class="pt-6 text-center">
+                  <h5 class="text-xl font-bold text-white font-serif">Alejandro Landaeta</h5>
+                  <p class="mt-1 text-sm text-stone-500 uppercase font-semibold">
+                    Senior Barber
+                  </p>
+                  <div class="mt-6">
+                    <button
+                      class="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-google"></i></button
+                    ><button
+                      class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-twitter"></i></button
+                    ><button
+                      class="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                      type="button"
+                    >
+                      <i class="fab fa-instagram"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="relative bg-neutral-700 pt-8 pb-6">
+      <div
+        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        style="height: 80px;"
+      >
+        <svg
+          class="absolute bottom-0 overflow-hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          y="0"
+        >
+          <polygon
+            class="text-neutral-700 fill-current"
+            points="2560 0 2560 100 0 100"
+          ></polygon>
+        </svg>
+      </div>
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="mt-6">
+              <button
+                class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-instagram"></i></button
+              ><button
+                class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-facebook-square"></i></button
+              ><button
+                class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+                type="button"
+              >
+                <i class="flex fab fa-dribbble"></i></button
+              >
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="flex flex-wrap items-top mb-6">
+              <div class="w-full lg:w-4/12 px-4 ml-auto">
+                <span
+                  class="block uppercase text-gray-100 text-sm font-semibold mb-2"
+                  >Useful Links</span
+                >
+                <ul class="list-unstyled">
+                  <li>
+                    <a
+                      class="text-gray-100 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://www.creative-tim.com/presentation"
+                      >About Us</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-100 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://www.creative-tim.com/bootstrap-themes/free"
+                      >Free Products</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="w-full lg:w-4/12 px-4">
+                <span
+                  class="block uppercase text-gray-100 text-sm font-semibold mb-2"
+                  >Other Resources</span
+                >
+                <ul class="list-unstyled">
+                  <li>
+                    <a
+                      class="text-gray-100 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md"
+                      >MIT License</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-100 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://creative-tim.com/terms"
+                      >Terms &amp; Conditions</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-100 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://creative-tim.com/privacy"
+                      >Privacy Policy</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="text-gray-100 hover:text-gray-900 font-semibold block pb-2 text-sm"
+                      href="https://creative-tim.com/contact-us"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-6 border-gray-400" />
+        <div
+          class="flex flex-wrap items-center md:justify-between justify-center"
+        >
+          <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+            <div class="text-sm text-gray-100 font-semibold py-1">
+              Copyright © 2024
+              <a
+                href="https://www.creative-tim.com"
+                class="text-gray-100 hover:text-gray-300"
+                >Reinaldo Landaeta</a
+              >.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    function toggleNavbar(collapseID) {
+      document.getElementById(collapseID).classList.toggle("hidden");
+      document.getElementById(collapseID).classList.toggle("block");
+    }
+  </script>
+    <script src="/Components/nav.js"></script>
+    <script src="index.js"></script>
+    <script src="map.js"></script>
+</html>

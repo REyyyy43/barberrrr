@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/img/apple-icon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+    <title>Barbería - Dashboard</title>
+
+</head>
+<body class="bg-stone-900 antialiased">
+    <nav id="navbar" class="bg-stone-800 w-full z-20 top-0 start-0 shadow-xl">
+
+    </nav>
+      <main>
+        <section>
+            <div class="container mx-auto px-4 w-full">
+                <h1 class="font-serif text-5xl text-white text-center p-2">Bienvenido Admin</h1>
+                <p class="font-serif text-white text-center p-4">aqui podras ver quien ha agendado contigo</p>
+            </div>
+        </section>
+        <section>
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4  bg-stone-700">
+                <div>
+                   
+                    <!-- Dropdown menu -->
+                    <div id="dropdownAction" class="z-10 hidden divide-y divide-gray-100 rounded-lg shadow w-44 bg-stone-700 ">
+                        <ul class="py-1 text-sm text-gray-200" aria-labelledby="dropdownActionButton">
+                            <li>
+                                <a href="#" class="block px-4 py-2  hover:bg-gray-600 hover:text-white">Reward</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2  hover:bg-gray-600 hover:text-white">Promote</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2  hover:bg-gray-600 hover:text-white">Activate account</a>
+                            </li>
+                        </ul>
+                        <div class="py-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete User</a>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <table class="w-full text-sm text-left rtl:text-right text-gray-100">
+                <thead class="text-xs text-gray-100 uppercase bg-stone-800">
+                    <tr>
+                      <th scope="col" class="px-6 py-3">
+                        chaked
+                    </th>
+                       
+                        <th scope="col" class="px-6 py-3">
+                            Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                           Service
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Status
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class=" border-b bg-stone-950 border-gray-700 hover:bg-stone-900 ">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="flex items-center px-6 py-4  whitespace-nowrap text-white">
+                            <img class="w-10 h-10 rounded-full" src="/images/perfil.svg" alt="Jese image">
+                            <div class="ps-3">
+                              <div class="text-base font-semibold">user 1</div>
+                              <div class="font-normal text-gray-500">user1@gmail.com</div>
+                            </div>  
+                        </th>
+                        <td class="px-6 py-4">
+                            1
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                        </td>
+                    </tr>
+                    <tr class=" border-b bg-stone-950 border-gray-700 hover:bg-stone-900">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-search-2" type="checkbox" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="flex items-center px-6 py-4 font-medium  whitespace-nowrap text-white">
+                            <img class="w-10 h-10 rounded-full" src="/images/perfil.svg" alt="Jese image">
+                            <div class="ps-3">
+                              <div class="text-base font-semibold">user 1</div>
+                              <div class="font-normal text-gray-500">user1@gmail.com</div>
+                            </div>
+                        </th>
+                        <td class="px-6 py-4">
+                          2
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                        </td>
+                    </tr>
+                    <tr class="border-b bg-stone-950 hover:bg-stone-900 border-gray-700">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-search-2" type="checkbox" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="flex items-center px-6 py-4 font-medium  whitespace-nowrap text-white">
+                            <img class="w-10 h-10 rounded-full" src="/images/perfil.svg" alt="Jese image">
+                            <div class="ps-3">
+                              <div class="text-base font-semibold">user 1</div>
+                              <div class="font-normal text-gray-500">user1@gmail.com</div>
+                            </div>
+                        </th>
+                        <td class="px-6 py-4">
+                            3
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                        </td>
+                    </tr>
+                    <tr class="border-b bg-stone-950 hover:bg-stone-900 border-gray-700">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-search-2" type="checkbox" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="flex items-center px-6 py-4 font-medium  whitespace-nowrap text-white">
+                            <img class="w-10 h-10 rounded-full" src="/images/perfil.svg" alt="Jese image">
+                            <div class="ps-3">
+                              <div class="text-base font-semibold">user 1</div>
+                                <div class="font-normal text-gray-500">user1@gmail.com</div>
+                            </div>
+                        </th>
+                        <td class="px-6 py-4">
+                            4
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                        </td>
+                    </tr>
+                    <tr class="bg-stone-950 hover:bg-stone-900">
+                        <td class="w-4 p-4">
+                            <div class="flex items-center">
+                                <input id="checkbox-table-search-3" type="checkbox" class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
+                            </div>
+                        </td>
+                        <th scope="row" class="flex items-center px-6 py-4 font-medium  whitespace-nowrap text-white">
+                            <img class="w-10 h-10 rounded-full" src="/images/perfil.svg" alt="Jese image">
+                            <div class="ps-3">
+                                <div class="text-base font-semibold">user 1</div>
+                                <div class="font-normal text-gray-500">user1@gmail.com</div>
+                            </div>
+                        </th>
+                        <td class="px-6 py-4">
+                           5
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2"></div> Offline
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          
+        </section>
+      </body>
+      </html>  
+      <script src="/Components/nav.js"></script>
+      <script src="index.js"></script>
+      </body>
+      </html>
+      

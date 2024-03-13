@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" />
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/img/apple-icon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <title>Barbería - Dashboard</title>
+
+</head>
+<body class="bg-stone-900 antialiased">
+    <nav id="navbar" class="bg-stone-800 w-full z-20 top-0 start-0 shadow-xl">
+    </nav>
+      <main>
+        <section>
+            <div
+        class="relative pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 75vh;"
+      >
+        <div
+          class="absolute top-0 w-full h-full bg-center bg-cover"
+          style='background-image: url("/images/andrea-donato-MNu0n-3BIKs-unsplash.jpg");'
+        >
+          <span
+            id="blackOverlay"
+            class="w-full h-full absolute opacity-75 bg-black"
+          ></span>
+        </div>
+        <div class="container relative mx-auto">
+          <div class="items-center flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+              <div class="pr-12">
+                <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Bienvenido</h1>
+                <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-4">aqui podras ver tus reservas y citas agendadas</p>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+          style="height: 70px;"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+          
+          </svg>
+        </div>
+      </div>
+         
+
+      <section>
+        <div class="container mx-auto px-4 w-full">
+            <h1 class="font-serif text-5xl text-white text-center p-8">Reservar Cita</h1>
+        
+        </div>  
+    <!-- Modal -->
+<div id="myModal" class="hidden modal fixed w-full h-full top-0 left-0 flex items-center justify-center">
+    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50 z-10"></div>
+    <div class="flex flex-col justify-center p-12 bg-stone-700 w-3/4 rounded-xl z-20">
+        <div>
+            <h1 id="date" class="text-center p-4 m-2 text-white text-xl font-bold"></h1>
+        <div class="flex justify-center mb-8">
+        <svg id="prevBtn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white cursor-pointer">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+        <div class="buttons-container flex mr-4 h-24">
+            <div class="slide +VSIOJ mr-4" data-item="true" data-selected="false">
+                <button id="button1" class="date-button bXwNAZ _XdYXY eUzqIF OGOfcF ebSpP3 p-4 inline-block bg-stone-500 text-white px-4 py-2 rounded-xl shadow-lg hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50" type="button" aria-pressed="false" aria-labelledby="label1" aria-live="polite">
+                    <div class="h_sR-F OGOfcF xa-XUF _ww5iF rounded-xl px-2">
+                        <p aria-hidden="true" id="label1" class="_-wKvd- font-default-header-m-semibold BVXt9F xa-XUF _ww5iF j58mlF">3</p>
+                    </div>
+                    <p aria-hidden="true" class="_-wKvd- font-default-body-s-medium _0wXUPF xa-XUF _ww5iF">Lun</p>
+                </button>
+            </div>
+            <div class="slide +VSIOJ mr-4" data-item="true" data-selected="false">
+                <button id="button-react-aria-36" data-qa="date-tile-2024-03-03" data-weekday="domingo" class="bXwNAZ _XdYXY eUzqIF OGOfcF ebSpP3 p-4 inline-block bg-stone-500 text-white px-4 py-2 rounded-xl shadow-lg hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50" type="button" aria-pressed="false" aria-labelledby="label2" aria-live="polite">
+                    <div class="h_sR-F OGOfcF xa-XUF _ww5iF rounded-xl px-2">
+                        <p aria-hidden="true" id="label2" class="_-wKvd- font-default-header-m-semibold BVXt9F xa-XUF _ww5iF j58mlF">3</p>
+                    </div>
+                    <p aria-hidden="true" class="_-wKvd- font-default-body-s-medium _0wXUPF xa-XUF _ww5iF">Mar</p>
+                </button>
+            </div>
+            <div class="slide +VSIOJ mr-4" data-item="true" data-selected="false">
+                <button id="button-react-aria-36" data-qa="date-tile-2024-03-03" data-weekday="domingo" class="bXwNAZ _XdYXY eUzqIF OGOfcF ebSpP3 p-4 inline-block bg-stone-500 text-white px-4 py-2 rounded-xl shadow-lg hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50" type="button" aria-pressed="false" aria-labelledby="label-react-aria-36" aria-live="polite">
+                    <div class="h_sR-F OGOfcF xa-XUF _ww5iF rounded-xl px-2">
+                        <p aria-hidden="true" id="label3" class="_-wKvd- font-default-header-m-semibold BVXt9F xa-XUF _ww5iF j58mlF">3</p>
+                    </div>
+                    <p aria-hidden="true" class="_-wKvd- font-default-body-s-medium _0wXUPF xa-XUF _ww5iF">Mie</p>
+                </button>
+            </div>
+            <div class="slide +VSIOJ mr-4" data-item="true" data-selected="false">
+                <button id="button-react-aria-36" data-qa="date-tile-2024-03-03" data-weekday="domingo" class="bXwNAZ _XdYXY eUzqIF OGOfcF ebSpP3 p-4 inline-block bg-stone-500 text-white px-4 py-2 rounded-xl shadow-lg hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50" type="button" aria-pressed="false" aria-labelledby="label-react-aria-36" aria-live="polite">
+                    <div class="h_sR-F OGOfcF xa-XUF _ww5iF rounded-xl px-2">
+                        <p aria-hidden="true" id="label4" class="_-wKvd- font-default-header-m-semibold BVXt9F xa-XUF _ww5iF j58mlF">3</p>
+                    </div>
+                    <p aria-hidden="true" class="_-wKvd- font-default-body-s-medium _0wXUPF xa-XUF _ww5iF">Jue</p>
+                </button>
+            </div>
+            <div class="slide +VSIOJ mr-4" data-item="true" data-selected="false">
+                <button id="button-react-aria-36" data-qa="date-tile-2024-03-03" data-weekday="domingo" class="bXwNAZ _XdYXY eUzqIF OGOfcF ebSpP3 p-4 inline-block bg-stone-500 text-white px-4 py-2 rounded-xl shadow-lg hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50" type="button" aria-pressed="false" aria-labelledby="label-react-aria-36" aria-live="polite">
+                    <div class="h_sR-F OGOfcF xa-XUF _ww5iF rounded-xl px-2">
+                        <p aria-hidden="true" id="label5" class="_-wKvd- font-default-header-m-semibold BVXt9F xa-XUF _ww5iF j58mlF">3</p>
+                    </div>
+                    <p aria-hidden="true" class="_-wKvd- font-default-body-s-medium _0wXUPF xa-XUF _ww5iF">Vie</p>
+                </button>
+            </div>
+            <div class="slide +VSIOJ mr-4" data-item="true" data-selected="false">
+                <button id="button-react-aria-36" data-qa="date-tile-2024-03-03" data-weekday="domingo" class="bXwNAZ _XdYXY eUzqIF OGOfcF ebSpP3 p-4 inline-block bg-stone-500 text-white px-4 py-2 rounded-xl shadow-lg hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50" type="button" aria-pressed="false" aria-labelledby="label-react-aria-36" aria-live="polite">
+                    <div class="h_sR-F OGOfcF xa-XUF _ww5iF rounded-xl px-2">
+                        <p aria-hidden="true" id="label6" class="_-wKvd- font-default-header-m-semibold BVXt9F xa-XUF _ww5iF j58mlF">3</p>
+                    </div>
+                    <p aria-hidden="true" class="_-wKvd- font-default-body-s-medium _0wXUPF xa-XUF _ww5iF">Sab</p>
+                </button>
+            </div>
+            <div class="slide +VSIOJ mr-4" data-item="true" data-selected="false">
+                <button id="button-react-aria-36" data-qa="date-tile-2024-03-03" data-weekday="domingo" class="bXwNAZ _XdYXY eUzqIF OGOfcF ebSpP3 p-4 inline-block bg-stone-500 text-white px-4 py-2 rounded-xl shadow-lg hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50" type="button" aria-pressed="false" aria-labelledby="label-react-aria-36" aria-live="polite">
+                    <div class="h_sR-F OGOfcF xa-XUF _ww5iF rounded-xl px-2">
+                        <p aria-hidden="true" id="label7" class="_-wKvd- font-default-header-m-semibold BVXt9F xa-XUF _ww5iF j58mlF">3</p>
+                    </div>
+                    <p aria-hidden="true" class="_-wKvd- font-default-body-s-medium _0wXUPF xa-XUF _ww5iF">Dom</p>
+                </button>
+            </div>
+            <svg id="nextBtn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white cursor-pointer">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+    </div>
+</div>
+</div>
+<div>
+<form class="max-w-sm mx-auto">
+    <label for="underline_select" class="sr-only">Underline select</label>
+    <select id="underline_select" class="block py-2.5 m-4 px-0 w-full text-sm text-stone-400 bg-transparent border-0 border-b-2 border-gray-50 appearance-none dark:text-gray-400 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+        <option selected>Horarios</option>
+        <option value="US">7:00am</option>
+        <option value="CA">8:00am</option>
+        <option value="FR">9:00am</option>
+        <option value="DE">10:00am</option>
+    </select>
+  </form>
+</div>
+<!-- Servicio 1 -->
+<div class="rounded-xl border border-1 border-stone-600 px-4 p-4 py-4 mb-2 flex items-center justify-between text-white">
+    <div>
+        <h3 class="font-medium text-base mb-1">Alejandro's Haircut</h3>
+        <p class="text-sm mb-1">45 min</p>
+        <p class="font-medium text-sm">11,99 €</p>
+    </div>
+    
+</div>
+<div class="flex justify-between">
+<div class="mt-4 text-right">
+    <a id="checkout-btn" class="bg-zinc-500 cursor-pointer hover:bg-zinc-600 text-white font-bold px-4 py-2 rounded-md">Aceptar</a>
+</div>
+<div class="mt-4 text-right">
+    <a id="checkout-btn" class="bg-red-500 cursor-pointer hover:bg-red-600 text-white font-bold px-4 py-2 rounded-md">Cancelar</a>
+</div>
+</div>
+</div>
+</div>
+     
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
+                
+                <!-- Lista de servicios -->
+                <div class="flex flex-col items-center">
+                    <!-- Encabezado de la lista de servicios -->
+                    <div class="w-full p-4">
+                            <!-- Servicio 1 -->
+                            <div class="bg-stone-800 rounded-xl border border-1 border-stone-600 px-4 py-2 mb-2 flex items-center justify-between text-white">
+                                <div>
+                                    <h3 class="font-medium text-base mb-1">Alejandro's Haircut</h3>
+                                    <p class="text-sm mb-1">45 min</p>
+                                    <p class="font-medium text-sm">11,99 €</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-stone-900 text-white rounded-3xl hover:bg-stone-700 add-to-cart-btn" 
+                                data-service-name="Alejandro's Haircut" data-service-price="11,99 €" data-service-duration="45 min">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    
+                                </a>
+                            </div>
+                    
+                            <!-- Servicio 2 -->
+                            <div class="bg-stone-800 rounded-xl border  border-stone-600 border-1 px-4 py-2 mb-2 flex items-center justify-between text-white">
+                                <div>
+                                    <h3 class="font-medium text-base mb-1">Arreglo de barba</h3>
+                                    <p class="text-sm mb-1">20 min</p>
+                                    <p class="font-medium text-sm">7,99 €</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-stone-900 text-white rounded-3xl hover:bg-stone-700 add-to-cart-btn" 
+                                data-service-name="Arreglo de barba" data-service-price="7,99 €" data-service-duration="20 min">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    
+                                </a>
+                            </div>
+                    
+                            <!-- Servicio 3 -->
+                            <div class="bg-stone-800 rounded-xl border  border-stone-600 border-1 px-4 py-2 mb-2 flex items-center justify-between text-white">
+                                <div>
+                                    <h3 class="font-medium text-base mb-1">Jubilados</h3>
+                                    <p class="text-sm mb-1">45 min</p>
+                                    <p class="font-medium text-sm">9,99 €</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-stone-900 text-white rounded-3xl hover:bg-stone-700 add-to-cart-btn" 
+                                data-service-name="Jubilados" data-service-price="9,99 €" data-service-duration="45 min">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    
+                                </a>
+                            </div>
+                            <div class="bg-stone-800 rounded-xl  border-stone-600 border border-1 px-4 py-2 mb-2 flex items-center justify-between text-white">
+                                <div>
+                                    <h3 class="font-medium text-base mb-1">Cejas</h3>
+                                    <p class="text-sm mb-1">10 min</p>
+                                    <p class="font-medium text-sm">3,99 €</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-stone-900 text-white rounded-3xl hover:bg-stone-700 add-to-cart-btn" 
+                                data-service-name="Cejas" data-service-price="3,99 €" data-service-duration="10 min">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    
+                                </a>
+                            </div>
+                    
+                            <!-- Servicio 2 -->
+                            <div class="bg-stone-800 rounded-xl border  border-stone-600 border-1 px-4 py-2 mb-2 flex items-center justify-between text-white">
+                                <div>
+                                    <h3 class="font-medium text-base mb-1">CORTE + BARBA</h3>
+                                    <p class="text-sm mb-1">1 h</p>
+                                    <p class="font-medium text-sm">16,99 €</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-stone-900 text-white rounded-3xl hover:bg-stone-700 add-to-cart-btn" 
+                                data-service-name="CORTE + BARBA" data-service-price="16,99 €" data-service-duration="1 h">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    
+                                </a>
+                            </div>
+
+                            <!-- Servicio 3 -->
+                           <div class="bg-stone-800 rounded-xl border border-1  border-stone-600 px-4 py-2 mb-2 flex items-center justify-between text-white">
+                                <div>
+                                    <h3 class="font-medium text-base mb-1">Full CORTE + BARBA + CEJAS</h3>
+                                    <p class="text-sm mb-1">1 h + 10 min</p>
+                                    <p class="font-medium text-sm">19,99 €</p>
+                                </div>
+                                <a href="#" class="px-4 py-2 bg-stone-900 text-white rounded-3xl hover:bg-stone-700 add-to-cart-btn" 
+                                data-service-name="Full CORTE + BARBA + CEJAS" data-service-price="19,99 €" data-service-duration="1 h + 10 min">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                    </svg>
+                                    
+                                </a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <!-- Carrito de compras -->
+                    <div id="cart" class="border h-full md:h-5/6 bg-stone-800  border-stone-600 text-white shadow-md rounded-lg p-4">
+                        <div class="flex items-center">
+                            <img src="/images/Captura de pantalla 2024-02-16 030656.png" class="h-10 md:h-16 mr-4" alt="Flowbite Logo">
+                            <h2 class="font-serif font-bold">Alejandro's Barbershop</h2>
+                        </div>
+                        <ul id="cart-items" class="divide-y divide-gray-200">
+                            <!-- Los elementos del carrito se cargarán dinámicamente aquí -->
+                        </ul>
+                        <div id="cart-total" class="mt-4 text-right font-serif font-semibold">
+                            Total: $<span id="total-price">0</span>
+                        </div>
+                        <div class="mt-4 text-right">
+                            <a id="accept-btn" class="bg-zinc-700 cursor-pointer hover:bg-zinc-600 text-white font-bold px-4 py-2 rounded-md">Aceptar</a>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div> 
+        </section>
+ <!-- Modal -->
+<div id="modal" class="fixed z-10 inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- Fondo oscuro detrás del modal -->
+        <div class="fixed inset-0 bg-stone-900 bg-opacity-75 transition-opacity" aria-hidden="true">
+
+        <!-- Contenido del modal -->
+        <div class="bg-stone-800 p-4 rounded mx-auto max-w-lg w-full text-white">
+            <div class="mb-5">
+                <h2 class="font-semibold text-lg mb-2 text-white">Citas Agendadas</h2>
+                <ul class="divide-y divide-gray-200">
+                    <!-- Elementos del carrito (citas agendadas) -->
+                    <li class="py-2">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-medium text-base">Corte de pelo</h3>
+                                <p class="text-sm text-gray-100">Fecha: 22 de Febrero de 2024 <br>
+                                     Hora: 10:00 AM</p>
+                                <p class="text-sm text-gray-100">Duración: 1 hora</p>
+                            </div>
+                            <div class="flex items-center">
+                                <p class="font-medium text-sm mr-2">Precio: $30</p>
+                                <!-- Botón para cancelar cita -->
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Otros elementos del carrito (citas agendadas) -->
+                </ul>
+                <!-- Total de las citas -->
+                <div class="text-right font-semibold mt-4">
+                    Total: $30
+                </div>
+                <!-- Botón de pagar -->
+                <div class="mt-4 text-right">
+                    <button class="px-4 py-2 bg-green-700 text-white rounded hover:bg-green-600 font-bold flex">Pagar
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+                      </svg>
+                      </button>
+                      <button class="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-500">Cancelar</button>
+                </div>
+            </div>
+            <!-- Botón para cerrar el modal -->
+            <button id="closeModalButton" class="absolute top-0 right-0 p-2 m-3 rounded-xl text-white hover:text-red-600 bg-red-600 hover:bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                  </svg>
+                  
+            </button>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+    </main> 
+    
+</body>
+</html>  
+<script src="/Components/nav.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
+
+
